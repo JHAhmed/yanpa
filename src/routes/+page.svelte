@@ -93,7 +93,7 @@
 	<meta name="description" content="A stupidly dead simple text editor." />
 	<meta property="og:title" content="YANPA - Yet Another Nopepad" />
 	<meta property="og:type" content="website" />
-	<meta property="og:image" content="{page.url.origin}/ogimage.png" />
+	<meta property="og:image" content="{page.url.origin}/ogimage.jpg" />
 	<meta property="og:url" content="{page.url.origin}/" />
 	<meta property="og:description" content="A stupidly dead simple text editor." />
 </svelte:head>
