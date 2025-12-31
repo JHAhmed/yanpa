@@ -27,12 +27,12 @@
 
 	function increaseTextSize() {
 		textSize = Math.min(textSize + 1, 5);
-		localStorage.setItem('yanp-text-size', textSize);
+		localStorage.setItem('yanpa-text-size', textSize);
 	}
 
 	function decreaseTextSize() {
 		textSize = Math.max(textSize - 1, 1);
-		localStorage.setItem('yanp-text-size', textSize);
+		localStorage.setItem('yanpa-text-size', textSize);
 	}
 
 	function toggletheme() {
@@ -45,11 +45,11 @@
 
 	function toggleSpellcheck() {
 		spellcheck = !spellcheck;
-		localStorage.setItem('yanp-spellcheck', spellcheck);
+		localStorage.setItem('yanpa-spellcheck', spellcheck);
 	}
 
 	function syncToLocalStorage() {
-		localStorage.setItem('yanp-text', text);
+		localStorage.setItem('yanpa-text', text);
 	}
 
 	const buttons = $derived([
@@ -62,12 +62,12 @@
 
 	onMount(() => {
 		if (browser) {
-			text = localStorage.getItem('yanp-text') || '';
+			text = localStorage.getItem('yanpa-text') || '';
 
 			// Fix: Parse integer to avoid string concatenation errors later
-			textSize = parseInt(localStorage.getItem('yanp-text-size') || '1');
+			textSize = parseInt(localStorage.getItem('yanpa-text-size') || '1');
 
-			spellcheck = localStorage.getItem('yanp-spellcheck') === 'true';
+			spellcheck = localStorage.getItem('yanpa-spellcheck') === 'true';
 
 			const theme = localStorage.getItem('theme');
 			isDark = theme === 'dark';
@@ -101,35 +101,47 @@
 <Toaster />
 
 <div
-	class="relative h-full w-full grow rounded-2xl bg-white shadow-xl/5 transition-all duration-300 ease-in-out dark:bg-gray-950">
-	<div class="absolute right-0 bottom-0 m-4 flex gap-2">
-		<button
-			onclick={toggleSpellcheck}
-			class="rounded-md {spellcheck
-				? 'bg-green-50 hover:bg-green-100 dark:bg-green-900 dark:hover:bg-green-800'
-				: 'bg-red-50 hover:bg-red-100 dark:bg-red-900 dark:hover:bg-red-800'} p-0.5 px-2 text-xs text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-100">
-			Spellcheck
-		</button>
-
-		{#each buttons as button}
-			<button onclick={button.action}
-				><Icon
-					icon={button.icon}
-					class="size-6 cursor-pointer rounded-md bg-gray-50 p-0.5 text-gray-600 hover:bg-gray-100  dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 " /></button>
-		{/each}
+	class="flex min-h-dvh flex-col bg-gray-50 p-4 transition-all duration-300 ease-in-out selection:rounded-sm selection:bg-gray-800 selection:text-gray-100 md:p-6 lg:p-8 dark:bg-gray-900">
+	<div
+		class="relative flex h-full w-full grow flex-col rounded-2xl bg-white shadow-xl/5 transition-all duration-300 ease-in-out dark:bg-gray-950">
+		<textarea
+			class="focus:ring-none h-full w-full grow resize-none p-4 tracking-[-0.015em] text-gray-800 focus:outline-none lg:p-6 dark:text-gray-200 {textSizeMap[
+				textSize
+			]}"
+			cols="64"
+			rows="4"
+			bind:value={text}
+			spellcheck={spellcheck ? 'true' : 'false'}
+			onblur={syncToLocalStorage}
+			name=""
+			id=""></textarea>
 	</div>
 
-	<textarea
-		class="focus:ring-none h-full w-full resize-none p-4 tracking-[-0.015em] text-gray-800 focus:outline-none lg:p-6 dark:text-gray-200 {textSizeMap[
-			textSize
-		]}"
-		cols="64"
-		rows="4"
-		bind:value={text}
-		spellcheck={spellcheck ? 'true' : 'false'}
-		onblur={syncToLocalStorage}
-		name=""
-		id=""></textarea>
+	<div
+		class="mt-2 flex flex-col items-center justify-between gap-2 md:mt-4 md:flex-row md:text-sm lg:mt-6">
+		<div class="flex gap-2">
+			<button
+				onclick={toggleSpellcheck}
+				class="rounded-md {spellcheck
+					? 'bg-green-50 hover:bg-green-100 dark:bg-green-900 dark:hover:bg-green-800'
+					: 'bg-red-50 hover:bg-red-100 dark:bg-red-900 dark:hover:bg-red-800'} p-0.5 px-2 text-xs text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-100">
+				Spellcheck
+			</button>
+
+			{#each buttons as button}
+				<button onclick={button.action}
+					><Icon
+						icon={button.icon}
+						class="size-6 cursor-pointer rounded-md bg-gray-50 p-0.5 text-gray-600 hover:bg-gray-100  dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 " /></button>
+			{/each}
+		</div>
+
+		<p class=" text-center text-xs text-gray-500">
+			By <span class="text-gray-900 dark:text-gray-200">Jamal Haneef</span> &
+			<a href="https://wurks.studio" class="text-primary dark:text-white">Wurks Studio</a>, built
+			with SvelteKit & ❤️
+		</p>
+	</div>
 </div>
 
 <style>

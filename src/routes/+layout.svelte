@@ -18,12 +18,13 @@
 	<meta property="og:description" content="A stupidly dead simple text editor." />
 </svelte:head>
 
-<div
-	class="h-screen bg-gray-50 p-4 transition-all duration-300 ease-in-out selection:rounded-sm selection:bg-gray-800 selection:text-gray-100 md:p-8 lg:p-12 dark:bg-gray-900">
+<!-- <div
+	class="flex min-h-dvh flex-col bg-gray-50 p-4 transition-all duration-300 ease-in-out selection:rounded-sm selection:bg-gray-800 selection:text-gray-100 md:p-6 lg:p-8 dark:bg-gray-900">
 	{@render children()}
-	<p class="my-4 text-center text-xs text-gray-500 md:text-sm">
+	<p class="mt-2 text-center text-xs text-gray-500 md:mt-4 md:text-sm lg:mt-6">
 		By <span class="text-gray-900 dark:text-gray-200">Jamal Haneef</span> &
 		<a href="https://wurks.studio" class="text-primary dark:text-white">Wurks Studio</a>, built with
 		SvelteKit & ❤️
 	</p>
-</div>
+</div> -->
+{@render children()}

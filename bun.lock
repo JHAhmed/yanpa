@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "yanp",
+      "name": "yanpa",
       "dependencies": {
         "@iconify/svelte": "^5.1.0",
         "animejs": "^4.2.2",
