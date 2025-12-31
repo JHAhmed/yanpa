@@ -41,7 +41,6 @@
 
 		isDark = !isDark;
 		localStorage.setItem('theme', isDark ? 'dark' : 'light');
-		console.log(isDark);
 	}
 
 	function toggleSpellcheck() {
@@ -54,6 +53,7 @@
 	}
 
 	const buttons = $derived([
+		{ label: 'Copy', icon: 'ph:clipboard-text', action: copyText },
 		{ label: 'Increase Size', icon: 'ph:plus', action: increaseTextSize },
 		{ label: 'Decrease Size', icon: 'ph:minus', action: decreaseTextSize },
 		{ label: 'Toggle Dark Mode', icon: isDark ? 'ph:sun' : 'ph:moon', action: toggletheme }
