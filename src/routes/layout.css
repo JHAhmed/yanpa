@@ -10,3 +10,25 @@
 	--font-sans: 'Google Sans Flex', 'sans-serif';
 	--color-primary: #5809fc;
 }
+
+*::-webkit-scrollbar {
+	width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+	background: #ffffff;
+	border-radius: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+	background: #424242;
+	border-radius: 8px;
+}
+
+.dark *::-webkit-scrollbar-track {
+	background: #030712;
+}
+
+.dark *::-webkit-scrollbar-thumb {
+	background: #ffffff;
+}

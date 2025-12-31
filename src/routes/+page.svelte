@@ -105,7 +105,7 @@
 	<div
 		class="relative flex h-full w-full grow flex-col rounded-2xl bg-white shadow-xl/5 transition-all duration-300 ease-in-out dark:bg-gray-950">
 		<textarea
-			class="focus:ring-none h-full w-full grow resize-none p-4 tracking-[-0.015em] text-gray-800 focus:outline-none lg:p-6 dark:text-gray-200 {textSizeMap[
+			class="focus:ring-none h-full w-full flex-1 resize-none p-4 tracking-[-0.015em] text-gray-800 focus:outline-none lg:p-6 dark:text-gray-200 {textSizeMap[
 				textSize
 			]}"
 			cols="64"
@@ -118,8 +118,8 @@
 	</div>
 
 	<div
-		class="mt-2 flex flex-col items-center justify-between gap-2 md:mt-4 md:flex-row md:text-sm lg:mt-6">
-		<div class="flex gap-2">
+		class="mt-3 flex flex-col items-center justify-between gap-3 md:mt-4 md:flex-row md:text-sm lg:mt-6">
+		<div class="flex gap-3">
 			<button
 				onclick={toggleSpellcheck}
 				class="rounded-md {spellcheck
@@ -139,23 +139,31 @@
 		<p class=" text-center text-xs text-gray-500">
 			By <span class="text-gray-900 dark:text-gray-200">Jamal Haneef</span> &
 			<a href="https://wurks.studio" class="text-primary dark:text-white">Wurks Studio</a>, built
-			with SvelteKit & ❤️
+			with SvelteKit.
 		</p>
 	</div>
 </div>
 
 <style>
-	textarea::-webkit-scrollbar {
-		width: 12px;
+	/*textarea::-webkit-scrollbar {
+		width: 8px;
 	}
 
 	textarea::-webkit-scrollbar-track {
 		background: #ffffff;
-		border-radius: 12px;
+		border-radius: 8px;
 	}
 
 	textarea::-webkit-scrollbar-thumb {
 		background: #424242;
-		border-radius: 12px;
+		border-radius: 8px;
 	}
+
+	.dark textarea::-webkit-scrollbar-track {
+		background: #030712;
+	}
+
+	.dark textarea::-webkit-scrollbar-thumb {
+		background: #ffffff;
+	}*/
 </style>
