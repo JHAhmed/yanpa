@@ -5,6 +5,7 @@
 	import Icon from '@iconify/svelte';
 	import { toast, Toaster } from 'svelte-sonner';
 	import { browser } from '$app/environment';
+	import { page } from '$app/state';
 
 	let text = $state('');
 	let textSize = $state(1);
@@ -86,6 +87,16 @@
 		});
 	});
 </script>
+
+<svelte:head>
+	<title>YANPA - Yet Another Nopepad</title>
+	<meta name="description" content="A stupidly dead simple text editor." />
+	<meta property="og:title" content="YANPA - Yet Another Nopepad" />
+	<meta property="og:type" content="website" />
+	<meta property="og:image" content="{page.url.origin}/ogimage.png" />
+	<meta property="og:url" content="{page.url.origin}/" />
+	<meta property="og:description" content="A stupidly dead simple text editor." />
+</svelte:head>
 
 <Toaster />
 
