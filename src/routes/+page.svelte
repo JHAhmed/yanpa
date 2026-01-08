@@ -75,7 +75,6 @@
 		if (browser) {
 			text = localStorage.getItem('yanpa-text') || '';
 
-			// Fix: Parse integer to avoid string concatenation errors later
 			textSize = parseInt(localStorage.getItem('yanpa-text-size') || '1');
 
 			spellcheck = localStorage.getItem('yanpa-spellcheck') === 'true';
@@ -114,9 +113,9 @@
 <div
 	class="flex min-h-dvh flex-col bg-gray-50 p-4 transition-all duration-300 ease-in-out selection:rounded-sm selection:bg-gray-800 selection:text-gray-100 md:p-6 lg:p-8 dark:bg-gray-900">
 	<div
-		class="relative flex h-full w-full grow flex-col rounded-2xl bg-white p-2 shadow-xl/5 transition-all duration-300 ease-in-out lg:p-3 dark:bg-gray-950">
+		class="relative flex h-full w-full grow flex-col rounded-2xl p-2 lg:p-3 bg-white shadow-xl/5 transition-all duration-300 ease-in-out dark:bg-gray-950">
 		<textarea
-			class="focus:ring-none h-full w-full flex-1 resize-none p-2 tracking-[-0.015em] text-gray-800 focus:outline-none lg:p-3 dark:text-gray-200 {textSizeMap[
+			class="focus:ring-none h-full w-full flex-1 resize-none p-2 lg:p-3 tracking-[-0.015em] text-gray-800 focus:outline-none  dark:text-gray-200 {textSizeMap[
 				textSize
 			]}"
 			cols="64"
@@ -134,8 +133,8 @@
 			<button
 				onclick={toggleSpellcheck}
 				class="rounded-md {spellcheck
-					? 'bg-green-100 hover:bg-green-200/90 dark:bg-green-900 dark:hover:bg-green-800'
-					: 'bg-red-100 hover:bg-red-200/90 dark:bg-red-900 dark:hover:bg-red-800'} cursor-pointer p-0.5 px-2 text-xs text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-100">
+					? 'bg-green-100 hover:bg-green-200/90 dark:bg-green-900 dark:hover:bg-green-800/90'
+					: 'bg-red-100 hover:bg-red-200/90 dark:bg-red-900 dark:hover:bg-red-800/90'} p-0.5 px-2 text-xs text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-100">
 				Spellcheck
 			</button>
 
