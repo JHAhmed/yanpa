@@ -100,7 +100,7 @@
 <Toaster />
 
 <div
-	class="flex min-h-dvh flex-col bg-gray-50 p-4 transition-all duration-300 ease-in-out selection:rounded-sm selection:bg-gray-800 selection:text-gray-100 md:p-6 lg:p-8 dark:bg-gray-900">
+	class="flex min-h-dvh flex-col bg-gray-50 p-4 main transition-all duration-300 ease-in-out selection:rounded-sm selection:bg-gray-800 selection:text-gray-100 md:p-6 lg:p-8 dark:bg-gray-900">
 	<div
 		class="relative flex h-full w-full grow flex-col rounded-2xl p-2 lg:p-3 bg-white shadow-xl/5 transition-all duration-300 ease-in-out dark:bg-gray-950">
 		<textarea
@@ -144,6 +144,11 @@
 </div>
 
 <style>
+
+	.main {
+		padding-bottom: env(safe-area-inset-bottom);
+	}
+
 	/*textarea::-webkit-scrollbar {
 		width: 8px;
 	}
