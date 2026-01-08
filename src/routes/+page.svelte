@@ -10,6 +10,7 @@
 	let text = $state('');
 	let textSize = $state(1);
 	let spellcheck = $state(true);
+	let isMarkdown = $state(false);
 	let isDark = $state(false);
 
 	const textSizeMap = {
@@ -48,6 +49,11 @@
 		localStorage.setItem('yanpa-spellcheck', spellcheck);
 	}
 
+	function toggleMarkdown() {
+		isMarkdown = !isMarkdown;
+		localStorage.setItem('yanpa-markdown', isMarkdown);
+	}
+
 	function syncToLocalStorage() {
 		localStorage.setItem('yanpa-text', text);
 	}
@@ -56,7 +62,12 @@
 		{ label: 'Copy', icon: 'ph:clipboard-text', action: copyText },
 		{ label: 'Increase Size', icon: 'ph:plus', action: increaseTextSize },
 		{ label: 'Decrease Size', icon: 'ph:minus', action: decreaseTextSize },
-		{ label: 'Toggle Dark Mode', icon: isDark ? 'ph:sun' : 'ph:moon', action: toggletheme }
+		{ label: 'Toggle Dark Mode', icon: isDark ? 'ph:sun' : 'ph:moon', action: toggletheme },
+		{
+			label: 'Toggle Markdown Mode',
+			icon: isMarkdown ? 'ph:file-md-fill' : 'ph:file-md',
+			action: toggleMarkdown
+		}
 		// { label: 'Sync to Local Storage', icon: 'ph:sync', action: syncToLocalStorage }
 	]);
 
