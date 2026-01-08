@@ -10,6 +10,7 @@
 	let text = $state('');
 	let textSize = $state(1);
 	let spellcheck = $state(true);
+	let isMarkdown = $state(false);
 	let isDark = $state(false);
 
 	const textSizeMap = {
@@ -48,6 +49,11 @@
 		localStorage.setItem('yanpa-spellcheck', spellcheck);
 	}
 
+	function toggleMarkdown() {
+		isMarkdown = !isMarkdown;
+		localStorage.setItem('yanpa-markdown', isMarkdown);
+	}
+
 	function syncToLocalStorage() {
 		localStorage.setItem('yanpa-text', text);
 	}
@@ -56,7 +62,12 @@
 		{ label: 'Copy', icon: 'ph:clipboard-text', action: copyText },
 		{ label: 'Increase Size', icon: 'ph:plus', action: increaseTextSize },
 		{ label: 'Decrease Size', icon: 'ph:minus', action: decreaseTextSize },
-		{ label: 'Toggle Dark Mode', icon: isDark ? 'ph:sun' : 'ph:moon', action: toggletheme }
+		{ label: 'Toggle Dark Mode', icon: isDark ? 'ph:sun' : 'ph:moon', action: toggletheme },
+		{
+			label: 'Toggle Markdown Mode',
+			icon: isMarkdown ? 'ph:file-md-fill' : 'ph:file-md',
+			action: toggleMarkdown
+		}
 		// { label: 'Sync to Local Storage', icon: 'ph:sync', action: syncToLocalStorage }
 	]);
 
@@ -103,9 +114,9 @@
 <div
 	class="flex min-h-dvh flex-col bg-gray-50 p-4 transition-all duration-300 ease-in-out selection:rounded-sm selection:bg-gray-800 selection:text-gray-100 md:p-6 lg:p-8 dark:bg-gray-900">
 	<div
-		class="relative flex h-full w-full grow flex-col rounded-2xl bg-white shadow-xl/5 transition-all duration-300 ease-in-out dark:bg-gray-950">
+		class="relative flex h-full w-full grow flex-col rounded-2xl bg-white p-2 shadow-xl/5 transition-all duration-300 ease-in-out lg:p-3 dark:bg-gray-950">
 		<textarea
-			class="focus:ring-none h-full w-full flex-1 resize-none p-4 tracking-[-0.015em] text-gray-800 focus:outline-none lg:p-6 dark:text-gray-200 {textSizeMap[
+			class="focus:ring-none h-full w-full flex-1 resize-none p-2 tracking-[-0.015em] text-gray-800 focus:outline-none lg:p-3 dark:text-gray-200 {textSizeMap[
 				textSize
 			]}"
 			cols="64"
@@ -123,8 +134,8 @@
 			<button
 				onclick={toggleSpellcheck}
 				class="rounded-md {spellcheck
-					? 'bg-green-50 hover:bg-green-100 dark:bg-green-900 dark:hover:bg-green-800'
-					: 'bg-red-50 hover:bg-red-100 dark:bg-red-900 dark:hover:bg-red-800'} p-0.5 px-2 text-xs text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-100">
+					? 'bg-green-100 hover:bg-green-200/90 dark:bg-green-900 dark:hover:bg-green-800'
+					: 'bg-red-100 hover:bg-red-200/90 dark:bg-red-900 dark:hover:bg-red-800'} cursor-pointer p-0.5 px-2 text-xs text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-100">
 				Spellcheck
 			</button>
 
@@ -132,7 +143,7 @@
 				<button onclick={button.action}
 					><Icon
 						icon={button.icon}
-						class="size-6 cursor-pointer rounded-md bg-gray-50 p-0.5 text-gray-600 hover:bg-gray-100  dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 " /></button>
+						class="size-6 cursor-pointer rounded-md bg-gray-100 p-0.5 text-gray-600 hover:bg-gray-200  dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 " /></button>
 			{/each}
 		</div>
 
